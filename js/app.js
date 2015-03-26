@@ -43,7 +43,7 @@ Enemy.prototype.isColliding = function(enemy, player) {
             enemy.bodybottom < player.bodytop ||
             player.bodybottom < enemy.bodytop);
 };
-
+// if isColliding reset player
 Enemy.prototype.checkCollisions = function(enemy, player) {
     if (this.isColliding(enemy, player)) {
         console.log('collide');
@@ -78,7 +78,7 @@ Player.prototype.update = function() {
     this.bodytop = this.y;
     this.bodybottom = this.y + spriteWidth;
 
-
+    //if reach water tiles reset player
     if (this.y === -15){
         player.reset();
     };
