@@ -1,3 +1,4 @@
+spriteWidth = 55;
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
 
@@ -20,7 +21,6 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed * dt;
 
     //bounding box of enemy
-    spriteWidth = 55;
     this.bodyleft = this.x;
     this.bodyright = this.x + spriteWidth;
     this.bodytop = this.y;
@@ -31,6 +31,23 @@ Enemy.prototype.update = function(dt) {
         this.x = -150;
         this.y = this.y = this.yposition[Math.floor(Math.random() * this.yposition.length)];
         this.speed = Math.floor(Math.random() * (400-100)+100);
+    };
+
+    this.checkCollisions(this, player);
+};
+
+// checking for collision
+Enemy.prototype.isColliding = function(enemy, player) {
+    return !(enemy.bodyright < player.bodyleft ||
+            player.bodyright < enemy.bodyleft ||
+            enemy.bodybottom < player.bodytop ||
+            player.bodybottom < enemy.bodytop);
+};
+
+Enemy.prototype.checkCollisions = function(enemy, player) {
+    if (this.isColliding(enemy, player)) {
+        console.log('collide');
+        player.reset();
     };
 };
 
@@ -46,6 +63,10 @@ var Player = function(x,y) {
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
+    this.bodyleft = this.x;
+    this.bodyright = this.x + spriteWidth;
+    this.bodytop = this.y;
+    this.bodybottom = this.y + spriteWidth;
 
 }
 
@@ -56,7 +77,18 @@ Player.prototype.update = function() {
     this.bodyright = this.x + spriteWidth;
     this.bodytop = this.y;
     this.bodybottom = this.y + spriteWidth;
+
+
+    if (this.y === -15){
+        player.reset();
+    };
 };
+
+//player reset
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
+}
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
