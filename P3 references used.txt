@@ -1,0 +1,33 @@
+google docs -
+		frogger game getting started -
+		https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub
+
+ArcadeGameDemo youtube video -
+	https://www.youtube.com/watch?v=SxeHV1kt7iU&feature=youtu.be
+
+udacity office hours videos -
+	https://plus.google.com/u/0/events/cupbs3pbne7qkuqok4g0ldhntic?authkey=COGW25b5jbv3-AE
+		where i am supposed to start from.
+	https://plus.google.com/u/0/events/cnol83cpan170apb933pvmlts94?authkey=CJaD8fvjs_2OSg
+	 trying to get random positions and how i can check collisions.
+
+udacity forums -
+http://discussions.udacity.com/c/nd001-2014-12-03/project-3
+	http://discussions.udacity.com/t/cannot-get-player-to-move/13775/9
+
+		handleInput = function ... looking why i was getting this error.
+
+
+	http://discussions.udacity.com/t/canvas-not-loading-after-instantiating-enemy-object/12344
+
+		why i was getting a blank screen and not the preloaded board i was told about.
+		mostly to do with player.
+
+	http://discussions.udacity.com/t/collision-detection/9807
+		collision detection.
+
+https://www.udacity.com/course/viewer#!/c-cs255/l-52265917/e-130215280/m-130291680
+	still collsion detection.
+
+www.stackoverflow.com
+	http://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
