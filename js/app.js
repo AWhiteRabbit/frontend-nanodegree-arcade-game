@@ -1,7 +1,6 @@
-spriteWidth = 55;
+var spriteWidth = 55;
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
-
     // The image/sprite for our enemies
     this.sprite = 'images/enemy-bug.png';
     this.yposition = [60,145,225];
@@ -9,7 +8,7 @@ var Enemy = function(x,y,speed) {
     this.y = this.yposition[Math.floor(Math.random() * this.yposition.length)];
     this.speed = Math.floor(Math.random() * (400-100)+100);
 
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -18,7 +17,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    this.x = this.x + this.speed * dt;
+    this.x += this.speed * dt;
 
     //bounding box of enemy
     this.bodyleft = this.x;
@@ -29,9 +28,9 @@ Enemy.prototype.update = function(dt) {
     // keep enemy on canvas
     if (this.x > 505) {
         this.x = -150;
-        this.y = this.y = this.yposition[Math.floor(Math.random() * this.yposition.length)];
+        this.y = this.yposition[Math.floor(Math.random() * this.yposition.length)];
         this.speed = Math.floor(Math.random() * (400-100)+100);
-    };
+    }
 
     this.checkCollisions(this, player);
 };
@@ -46,9 +45,8 @@ Enemy.prototype.isColliding = function(enemy, player) {
 // if isColliding reset player
 Enemy.prototype.checkCollisions = function(enemy, player) {
     if (this.isColliding(enemy, player)) {
-        console.log('collide');
         player.reset();
-    };
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -68,7 +66,7 @@ var Player = function(x,y) {
     this.bodytop = this.y;
     this.bodybottom = this.y + spriteWidth;
 
-}
+};
 
 Player.prototype.update = function() {
 
@@ -81,14 +79,14 @@ Player.prototype.update = function() {
     //if reach water tiles reset player
     if (this.y === -15){
         player.reset();
-    };
+    }
 };
 
 //player reset
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -99,19 +97,19 @@ Player.prototype.handleInput = function(keypressed) {
 
     if (keypressed === 'left' && this.x > 0) {
         this.x -= 100;
-    };
+    }
 
     if (keypressed === 'right' && this.x < 400) {
         this.x += 100;
-    };
+    }
 
     if (keypressed === 'up' && this.y > -15) {
         this.y -= 83;
-    };
+    }
 
     if (keypressed === 'down' && this.y < 400) {
         this.y += 83;
-    };
+    }
 
 };
 
